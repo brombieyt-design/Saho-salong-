@@ -684,6 +684,19 @@ img { max-width: 100%; display: block; }
     border: 1px solid var(--border-light);
 }
 
+/* Hide Elfsight branding */
+.eapps-widget-toolbar,
+.elfsight-app-5833ded4-6509-4c9d-b3d4-58c90ea82b96 + div,
+a[href*="elfsight"],
+.eapps-instagram-feed-posts-grid-load-more-container + div,
+div[class*="eapps"][class*="branding"],
+div[class*="elfsight"][class*="branding"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
 .instagram-feed:empty::after {
     content: 'Instagram-flöde laddas... Konfigurera ditt Elfsight App ID för att visa bilder från @salong_saho';
     color: var(--text-muted);
