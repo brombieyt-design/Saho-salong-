@@ -1,8 +1,26 @@
-// Navbar scroll effect
+// Navbar scroll effect + hero color handling
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+const hero = document.getElementById('hero');
+
+function updateNavbar() {
+    const scrollY = window.scrollY;
+    const heroBottom = hero.offsetTop + hero.offsetHeight - 80;
+
+    if (scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+
+    if (scrollY < heroBottom && !navbar.classList.contains('scrolled')) {
+        navbar.classList.add('on-hero');
+    } else {
+        navbar.classList.remove('on-hero');
+    }
+}
+
+window.addEventListener('scroll', updateNavbar);
+updateNavbar();
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
