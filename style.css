@@ -686,15 +686,42 @@ img { max-width: 100%; display: block; }
 
 /* Hide Elfsight branding */
 .eapps-widget-toolbar,
-.elfsight-app-5833ded4-6509-4c9d-b3d4-58c90ea82b96 + div,
 a[href*="elfsight"],
-.eapps-instagram-feed-posts-grid-load-more-container + div,
+a[href*="elfsight.com"],
 div[class*="eapps"][class*="branding"],
-div[class*="elfsight"][class*="branding"] {
+div[class*="elfsight"][class*="branding"],
+.eapps-instagram-feed-posts-grid-load-more-container + div,
+.eapps-instagram-feed-posts-view + a,
+.eapps-instagram-feed-posts-view ~ a,
+.eapps-instagram-feed-posts-view ~ div:last-child {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
+    max-height: 0 !important;
     overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Cover branding area at bottom of feed */
+.instagram-feed {
+    position: relative;
+}
+
+.instagram-feed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--bg-alt);
+    z-index: 999;
+    pointer-events: none;
 }
 
 .instagram-feed:empty::after {

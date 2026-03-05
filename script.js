@@ -55,6 +55,34 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
+// Remove Elfsight branding (injected dynamically after widget loads)
+function removeElfsightBranding() {
+    // Target links with "elfsight" in href
+    document.querySelectorAll('a[href*="elfsight"]').forEach(el => {
+        el.remove();
+    });
+    // Target any element containing "Free Instagram" text
+    document.querySelectorAll('.instagram-feed *').forEach(el => {
+        if (el.textContent && el.textContent.includes('Free Instagram')) {
+            el.remove();
+        }
+        if (el.textContent && el.textContent.includes('Elfsight')) {
+            el.remove();
+        }
+    });
+}
+
+// Run repeatedly since Elfsight loads async
+const brandingInterval = setInterval(removeElfsightBranding, 500);
+setTimeout(() => clearInterval(brandingInterval), 15000);
+
+// Also watch for DOM changes
+const feedContainer = document.getElementById('instagram-feed');
+if (feedContainer) {
+    const brandingObserver = new MutationObserver(removeElfsightBranding);
+    brandingObserver.observe(feedContainer, { childList: true, subtree: true });
+}
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
