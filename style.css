@@ -197,24 +197,13 @@ img { max-width: 100%; display: block; }
     max-width: 480px;
 }
 
-.hero-image-placeholder {
+.hero-img {
     width: 100%;
-    aspect-ratio: 3/4;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    height: 100%;
+    max-height: 70vh;
+    object-fit: cover;
     border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.08);
-}
-
-.hero-image-placeholder small {
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
 .hero-right {
@@ -428,6 +417,25 @@ img { max-width: 100%; display: block; }
     box-shadow: var(--shadow-lg);
 }
 
+.service-img {
+    width: 100%;
+    height: 180px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition);
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.05);
+}
+
 .service-icon {
     width: 56px;
     height: 56px;
@@ -486,56 +494,12 @@ img { max-width: 100%; display: block; }
 
 .feature svg { color: var(--primary-dark); flex-shrink: 0; }
 
-.about-image-placeholder {
+.about-img {
     width: 100%;
     aspect-ratio: 4/5;
-    background: linear-gradient(145deg, var(--bg-alt), var(--border-light));
+    object-fit: cover;
     border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-}
-
-.about-image-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(176, 141, 94, 0.08) 0%, transparent 50%);
-}
-
-.placeholder-content {
-    text-align: center;
-    color: var(--text-muted);
-    position: relative;
-    z-index: 1;
-}
-
-.placeholder-content svg {
-    margin: 0 auto 16px;
-    color: var(--primary);
-    opacity: 0.4;
-}
-
-.placeholder-content span {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    opacity: 0.5;
-    letter-spacing: 3px;
-}
-
-.placeholder-content small {
-    display: block;
-    font-size: 0.8rem;
-    margin-top: 4px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.4;
+    box-shadow: var(--shadow-lg);
 }
 
 /* ========== REVIEWS ========== */
@@ -822,22 +786,14 @@ div[class*="elfsight"][class*="branding"],
 .cta-section {
     padding: 100px 0;
     text-align: center;
-    background: var(--bg-dark);
+    background: linear-gradient(rgba(58, 54, 48, 0.88), rgba(58, 54, 48, 0.92)),
+                url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #fff;
     position: relative;
     overflow: hidden;
-}
-
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(200, 169, 126, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
 }
 
 .cta-section h2 {
