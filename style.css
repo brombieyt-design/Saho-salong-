@@ -671,6 +671,28 @@ img { max-width: 100%; display: block; }
     text-transform: uppercase;
 }
 
+/* Instagram Feed */
+.instagram-feed {
+    margin-bottom: 32px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+}
+
+.instagram-feed:empty::after {
+    content: 'Instagram-flöde laddas... Konfigurera ditt Elfsight App ID för att visa bilder från @salong_saho';
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 40px;
+    line-height: 1.8;
+}
+
 .gallery-cta {
     text-align: center;
     margin-top: 40px;
