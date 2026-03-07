@@ -4,18 +4,24 @@ const hero = document.getElementById('hero');
 
 function updateNavbar() {
     const scrollY = window.scrollY;
-    const heroBottom = hero.offsetTop + hero.offsetHeight - 80;
 
     if (scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
+        if (!hero) {
+            navbar.classList.add('scrolled');
+            return;
+        }
         navbar.classList.remove('scrolled');
     }
 
-    if (scrollY < heroBottom && !navbar.classList.contains('scrolled')) {
-        navbar.classList.add('on-hero');
-    } else {
-        navbar.classList.remove('on-hero');
+    if (hero) {
+        const heroBottom = hero.offsetTop + hero.offsetHeight - 80;
+        if (scrollY < heroBottom && !navbar.classList.contains('scrolled')) {
+            navbar.classList.add('on-hero');
+        } else {
+            navbar.classList.remove('on-hero');
+        }
     }
 }
 
@@ -26,21 +32,23 @@ updateNavbar();
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    navToggle.classList.toggle('active');
-});
-
-// Close mobile nav on link click
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('active');
+if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        navToggle.classList.toggle('active');
     });
-});
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('active');
+        });
+    });
+}
 
 // Scroll reveal animation
-const revealElements = document.querySelectorAll('.service-card, .review-card, .location-card');
+const revealElements = document.querySelectorAll('.service-card, .review-card, .location-card, .price-category');
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
@@ -56,37 +64,30 @@ const observer = new IntersectionObserver((entries) => {
 revealElements.forEach(el => observer.observe(el));
 
 // Remove Elfsight branding (injected dynamically after widget loads)
-function removeElfsightBranding() {
-    // Target links with "elfsight" in href
-    document.querySelectorAll('a[href*="elfsight"]').forEach(el => {
-        el.remove();
-    });
-    // Target any element containing "Free Instagram" text
-    document.querySelectorAll('.instagram-feed *').forEach(el => {
-        if (el.textContent && el.textContent.includes('Free Instagram')) {
-            el.remove();
-        }
-        if (el.textContent && el.textContent.includes('Elfsight')) {
-            el.remove();
-        }
-    });
-}
-
-// Run repeatedly since Elfsight loads async
-const brandingInterval = setInterval(removeElfsightBranding, 500);
-setTimeout(() => clearInterval(brandingInterval), 15000);
-
-// Also watch for DOM changes
 const feedContainer = document.getElementById('instagram-feed');
 if (feedContainer) {
+    function removeElfsightBranding() {
+        document.querySelectorAll('a[href*="elfsight"]').forEach(el => el.remove());
+        document.querySelectorAll('.instagram-feed *').forEach(el => {
+            if (el.textContent && (el.textContent.includes('Free Instagram') || el.textContent.includes('Elfsight'))) {
+                el.remove();
+            }
+        });
+    }
+
+    const brandingInterval = setInterval(removeElfsightBranding, 500);
+    setTimeout(() => clearInterval(brandingInterval), 15000);
+
     const brandingObserver = new MutationObserver(removeElfsightBranding);
     brandingObserver.observe(feedContainer, { childList: true, subtree: true });
 }
 
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links (only same-page anchors)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
         if (target) {
             e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth' });

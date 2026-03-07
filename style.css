@@ -551,7 +551,6 @@ img { max-width: 100%; display: block; }
 .price-name {
     font-size: 0.95rem;
     color: var(--text);
-    white-space: nowrap;
 }
 
 .price-name small {
@@ -1162,7 +1161,8 @@ div[class*="elfsight"][class*="branding"],
 /* Scroll reveal */
 .service-card,
 .review-card,
-.location-card {
+.location-card,
+.price-category {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease, border-color var(--transition), box-shadow var(--transition);
@@ -1170,7 +1170,8 @@ div[class*="elfsight"][class*="branding"],
 
 .service-card.visible,
 .review-card.visible,
-.location-card.visible {
+.location-card.visible,
+.price-category.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1213,6 +1214,9 @@ div[class*="elfsight"][class*="branding"],
     }
 
     .price-grid { grid-template-columns: 1fr; }
+    .price-category { padding: 24px 20px; }
+    .price-category-title { font-size: 1.1rem; }
+    .page-header { padding: 100px 0 36px; }
 
     .about-grid {
         grid-template-columns: 1fr;
