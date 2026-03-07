@@ -450,6 +450,49 @@ img { max-width: 100%; display: block; }
     line-height: 1.6;
 }
 
+/* ========== PAGE HEADER (subpages) ========== */
+.page-header {
+    padding: 120px 0 50px;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.page-subtitle {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    max-width: 560px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+}
+
+.breadcrumb a {
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+.breadcrumb span {
+    color: var(--text-muted);
+}
+
+.nav-links a.active {
+    color: var(--primary-dark) !important;
+    font-weight: 700;
+}
+
 /* ========== PRICE LIST ========== */
 .price-grid {
     display: grid;
