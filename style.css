@@ -737,13 +737,45 @@ img { max-width: 100%; display: block; }
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
-    padding: 24px 16px;
+    padding: 16px;
     text-align: center;
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--text);
     letter-spacing: 0.5px;
     transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.brand-item img {
+    max-width: 100%;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+.brand-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.brand-item.brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+.brand-item.brand-text:hover {
+    color: var(--text);
 }
 
 .brand-item:hover {
@@ -1249,7 +1281,8 @@ div[class*="elfsight"][class*="branding"],
     .services-grid { grid-template-columns: 1fr; }
     .reviews-grid { grid-template-columns: 1fr; }
     .brands-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .brand-item { padding: 18px 12px; font-size: 0.82rem; }
+    .brand-item { padding: 12px 8px; font-size: 0.78rem; min-height: 60px; }
+    .brand-item img { max-height: 36px; }
     .locations-grid { grid-template-columns: 1fr; }
 
     .gallery-grid {
