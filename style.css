@@ -1315,15 +1315,26 @@ div[class*="elfsight"][class*="branding"],
         font-size: 1rem !important;
     }
 
-    .hero-big-title span { font-size: clamp(3rem, 14vw, 6rem); }
-    .hero-content { padding-top: 90px; gap: 32px; }
+    .hero-big-title span { font-size: clamp(2.8rem, 13vw, 5rem); }
+    .hero-content { padding-top: 80px; gap: 20px; }
     .hero-service-list { max-width: 100%; padding: 0 8px; }
 
+    /* Hide top rows on mobile — show only last 3 + prislista btn */
+    .hero-service-row:nth-child(1),
+    .hero-service-row:nth-child(2),
+    .hero-service-row:nth-child(3) { display: none; }
+
+    /* Compact bottom bar — just tagline + button side by side */
     .hero-bottom-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: nowrap;
     }
+    .hero-rating { display: none; }
+    .hero-tagline { font-size: 0.7rem; letter-spacing: 0.1em; }
+    .hero-bottom-bar { padding: 12px 0; }
 
     .price-grid { grid-template-columns: 1fr; }
     .price-category { padding: 24px 20px; }
