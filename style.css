@@ -1348,6 +1348,7 @@ div[class*="elfsight"][class*="branding"],
     .hero-rating { display: none; }
     .hero-tagline { font-size: 0.7rem; letter-spacing: 0.1em; }
     .hero-bottom-bar { padding: 12px 0; }
+    .btn-number { display: none; }
 
     .price-grid { grid-template-columns: 1fr; }
     .price-category { padding: 24px 20px; }
