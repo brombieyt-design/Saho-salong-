@@ -1501,3 +1501,31 @@ div[class*="elfsight"][class*="branding"],
     .lightbox-close { top: 16px; right: 16px; width: 40px; height: 40px; }
     .lightbox-img { max-width: 95vw; max-height: 80vh; }
 }
+
+/* Policy page */
+.policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text);
+    line-height: 1.8;
+}
+
+.policy-content h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    margin: 32px 0 16px;
+}
+
+.policy-content h2:first-child {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.policy-content ul {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+.policy-content a {
+    color: var(--primary);
+}
