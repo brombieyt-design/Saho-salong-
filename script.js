@@ -176,3 +176,30 @@ if (lightbox) {
         if (e.key === 'ArrowRight') navigate(1);
     });
 }
+
+// Stats counter animation
+const statNumbers = document.querySelectorAll('.stat-number');
+if (statNumbers.length > 0) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.target, 10);
+            const duration = 600;
+            const steps = 40;
+            const increment = target / steps;
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.textContent = target.toLocaleString('sv-SE');
+                    clearInterval(timer);
+                } else {
+                    el.textContent = Math.floor(current).toLocaleString('sv-SE');
+                }
+            }, duration / steps);
+            statsObserver.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+    statNumbers.forEach(n => statsObserver.observe(n));
+}
