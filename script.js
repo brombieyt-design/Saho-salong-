@@ -1,17 +1,16 @@
-// Navbar scroll effect + hero color handling
+// Navbar scroll effect + hero color handling + mobile hide-on-scroll
 const navbar = document.getElementById('navbar');
 const hero = document.getElementById('hero');
+let lastScrollY = window.scrollY;
 
 function updateNavbar() {
     const scrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 768;
 
     if (scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
-        if (!hero) {
-            navbar.classList.add('scrolled');
-            return;
-        }
+        if (!hero) { navbar.classList.add('scrolled'); return; }
         navbar.classList.remove('scrolled');
     }
 
@@ -23,9 +22,22 @@ function updateNavbar() {
             navbar.classList.remove('on-hero');
         }
     }
+
+    // Mobile: hide on scroll down, show on scroll up
+    if (isMobile && scrollY > 100) {
+        if (scrollY > lastScrollY) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            navbar.classList.remove('nav-hidden');
+        }
+    } else {
+        navbar.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = scrollY;
 }
 
-window.addEventListener('scroll', updateNavbar);
+window.addEventListener('scroll', updateNavbar, { passive: true });
 updateNavbar();
 
 // Mobile nav toggle
