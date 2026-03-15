@@ -1759,3 +1759,76 @@ body::before {
 @media (max-width: 768px) {
     .mobile-cta-btn { display: flex; }
 }
+
+/* ========== ICON STRIP ========== */
+.icon-strip {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0;
+}
+
+.icon-strip-grid {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.icon-strip-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 16px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all var(--transition);
+    min-width: 100px;
+    flex: 0 0 auto;
+}
+
+.icon-strip-item:hover {
+    border-color: var(--border);
+    background: var(--bg-card);
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.icon-strip-item:hover .icon-strip-circle {
+    background: rgba(201, 166, 107, 0.18);
+    border-color: rgba(201, 166, 107, 0.4);
+}
+
+.icon-strip-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(201, 166, 107, 0.07);
+    border: 1px solid rgba(201, 166, 107, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition: all var(--transition);
+}
+
+.icon-strip-item span {
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: inherit;
+    transition: color var(--transition);
+}
+
+@media (max-width: 640px) {
+    .icon-strip { padding: 28px 0; }
+    .icon-strip-grid { gap: 4px; }
+    .icon-strip-item { min-width: 80px; padding: 14px 10px; gap: 8px; }
+    .icon-strip-circle { width: 52px; height: 52px; }
+    .icon-strip-circle svg { width: 22px; height: 22px; }
+    .icon-strip-item span { font-size: 0.7rem; }
+}
