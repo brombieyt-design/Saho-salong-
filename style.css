@@ -1277,6 +1277,17 @@ div[class*="elfsight"][class*="branding"],
 @media (max-width: 768px) {
     .nav-toggle { display: flex; }
 
+    /* Always show solid navbar on mobile — no transparent/jump effect */
+    .navbar,
+    .navbar.on-hero {
+        background: rgba(18, 14, 10, 0.97) !important;
+        backdrop-filter: blur(12px);
+        padding: 12px 0;
+    }
+    .navbar.on-hero .logo-text { color: var(--text) !important; }
+    .navbar.on-hero .logo-accent { color: var(--primary-dark) !important; }
+    .navbar.on-hero .nav-toggle span { background: var(--text) !important; }
+
     .nav-links {
         position: fixed;
         top: 0;
