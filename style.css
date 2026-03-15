@@ -1698,14 +1698,36 @@ body::before {
 }
 
 @media (max-width: 640px) {
+    .stats-section {
+        padding: 24px 0;
+    }
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .stat-item {
+        padding: 16px 12px;
     }
     .stat-item:nth-child(2)::after {
         display: none;
     }
     .stat-item:nth-child(odd):not(:last-child)::after {
         display: block;
+    }
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    .stat-suffix {
+        font-size: 1rem;
+    }
+    .stat-label {
+        font-size: 0.7rem;
+        margin-top: 4px;
+        letter-spacing: 0.08em;
+    }
+    /* Horizontal divider between rows */
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2) {
+        border-bottom: 1px solid var(--border);
     }
 }
 
